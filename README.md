@@ -32,7 +32,9 @@ npm start
 服务启动后执行，覆盖正常、冲突并发、越权跳步、温湿度冻结复核、磁盘失败与旧入口兼容（36 项断言）：
 
 ```bash
-node scripts/walkthrough.mjs
+node scripts/walkthrough.mjs        # 后端端到端
+node scripts/page-harness.mjs       # 页面失败注入/刷新恢复（真实执行页面脚本）
+node scripts/mobile-layout-check.mjs # 手机宽度（375/320px）防横向溢出核验
 ```
 
 ### 主要 API（均为 JSON）

@@ -63,7 +63,7 @@
       "createdAt": "2026-09-02T08:00:00.000Z",
       "readings": [
         {
-          "at": "2026-09-13T14:36:27.594Z",
+          "at": "2026-09-13T15:16:04.766Z",
           "temp": 22.4,
           "humidity": 55,
           "by": {
@@ -79,7 +79,7 @@
       "temp": 16.8,
       "humidity": 58,
       "frozen": true,
-      "frozenAt": "2026-09-13T14:36:27.594Z",
+      "frozenAt": "2026-09-13T15:16:04.766Z",
       "frozenReason": "温度 16.8℃ 越界[18,25]",
       "createdBy": {
         "id": "u-admin",
@@ -88,7 +88,7 @@
       "createdAt": "2026-09-02T08:00:00.000Z",
       "readings": [
         {
-          "at": "2026-09-13T14:36:27.594Z",
+          "at": "2026-09-13T15:16:04.766Z",
           "temp": 16.8,
           "humidity": 58,
           "by": {
@@ -115,7 +115,7 @@
       "sealLocation": null,
       "returnReason": null,
       "createdAt": "2026-09-02T09:00:00.000Z",
-      "updatedAt": "2026-09-13T14:36:27.594Z",
+      "updatedAt": "2026-09-13T15:16:04.766Z",
       "steps": [
         {
           "seq": 1,
@@ -131,7 +131,7 @@
       "versions": [
         {
           "no": 1,
-          "at": "2026-09-13T14:36:27.594Z",
+          "at": "2026-09-13T15:16:04.766Z",
           "step": "收样",
           "actor": {
             "id": "u-admin",
@@ -152,7 +152,7 @@
             "score": null,
             "sealLocation": null,
             "returnReason": null,
-            "updatedAt": "2026-09-13T14:36:27.594Z"
+            "updatedAt": "2026-09-13T15:16:04.766Z"
           },
           "stats": {
             "byStage": {
@@ -180,7 +180,7 @@
       "type": "环境越界",
       "detail": "温度 16.8℃ 越界[18,25]",
       "reading": {
-        "at": "2026-09-13T14:36:27.594Z",
+        "at": "2026-09-13T15:16:04.766Z",
         "temp": 16.8,
         "humidity": 58,
         "by": {
@@ -193,14 +193,14 @@
         "id": "u-admin",
         "name": "室主任松岚"
       },
-      "createdAt": "2026-09-13T14:36:27.594Z",
+      "createdAt": "2026-09-13T15:16:04.766Z",
       "review": null
     }
   ],
   "events": [
     {
       "id": "EVT-20260913-001",
-      "at": "2026-09-13T14:36:27.594Z",
+      "at": "2026-09-13T15:16:04.766Z",
       "type": "env.reading",
       "payload": {
         "batchId": "ENV-20260902-001",
@@ -211,7 +211,7 @@
     },
     {
       "id": "EVT-20260913-002",
-      "at": "2026-09-13T14:36:27.594Z",
+      "at": "2026-09-13T15:16:04.766Z",
       "type": "env.reading",
       "payload": {
         "batchId": "ENV-20260902-002",
@@ -222,7 +222,7 @@
     },
     {
       "id": "EVT-20260913-003",
-      "at": "2026-09-13T14:36:27.594Z",
+      "at": "2026-09-13T15:16:04.766Z",
       "type": "env.freeze",
       "payload": {
         "batchId": "ENV-20260902-002",
@@ -234,7 +234,7 @@
   "snapshots": [
     {
       "id": "SNAP-20260913-001",
-      "at": "2026-09-13T14:36:27.594Z",
+      "at": "2026-09-13T15:16:04.766Z",
       "archiveId": "RA-20260902-001",
       "versionNo": 1,
       "stats": {
