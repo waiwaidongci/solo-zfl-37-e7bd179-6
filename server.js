@@ -3,9 +3,13 @@ import { mkdir, readFile, writeFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
+import { ReproStore } from "./repro/store.js";
+import { handleRepro } from "./repro/routes.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const dbPath = join(__dirname, "data", "ink-stick-testing.json");
+// 可复现实验档案使用独立数据文件，旧数据 ink-stick-testing.json 保持原样
+const reproStore = new ReproStore(join(__dirname, "data", "repro-archives.json"));
 const port = Number(process.env.PORT || 3037);
 const seed = {
   "items": [
@@ -98,7 +102,7 @@ function page() {
   </style>
 </head>
 <body>
-  <header><div><h1>墨锭试磨室</h1><div class="meta">墨锭建档、试磨记录和评分统计</div></div><button id="reload">刷新</button></header>
+  <header><div><h1>墨锭试磨室</h1><div class="meta">墨锭建档、试磨记录和评分统计 · <a href="/repro" style="color:var(--accent)">可复现实验档案（新）</a></div></div><button id="reload">刷新</button></header>
   <main>
     <section>
       <form id="createForm"><h2>新增墨锭</h2><div id="fields"></div><label>初始状态</label><select name="status">${stages.map(s => '<option>'+s+'</option>').join('')}</select><button>保存墨锭</button></form>
@@ -160,6 +164,12 @@ function page() {
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, `http://${req.headers.host}`);
+    // 可复现实验档案子系统（/repro 与 /api/repro/*）
+    if (url.pathname === "/repro" || url.pathname.startsWith("/api/repro/")) {
+      const handled = await handleRepro(req, res, url, reproStore);
+      if (handled === false) send(res, 404, { error: "not_found" });
+      return;
+    }
     const db = await loadDb();
     if (req.method === "GET" && url.pathname === "/") return html(res, page());
     if (req.method === "GET" && url.pathname === "/api/items") return send(res, 200, db.items.map(summarize));
@@ -208,7 +218,10 @@ const server = http.createServer(async (req, res) => {
     if (req.method === "GET" && url.pathname === "/api/stats") return send(res, 200, computeStats(db.items));
     send(res, 404, { error: "not_found" });
   } catch (error) {
-    send(res, 500, { error: error.message });
+    const status = error.status || (error.code === "disk_write_failed" ? 507 : 500);
+    send(res, status, { error: error.code || "internal_error", message: error.message });
   }
 });
-server.listen(port, () => console.log("墨锭试磨室 listening on http://localhost:" + port));
+reproStore.init().then(() => {
+  server.listen(port, () => console.log("墨锭试磨室 listening on http://localhost:" + port));
+});

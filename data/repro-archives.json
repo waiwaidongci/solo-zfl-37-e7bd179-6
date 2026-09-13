@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "createdAt": "2026-09-01T08:00:00.000Z",
+    "seq": {
+      "evt": 3,
+      "ticket": 1,
+      "snap": 1
+    },
+    "lastIds": {
+      "ticket": "EX-20260913-001"
+    }
+  },
+  "users": [
+    {
+      "id": "u-clerk",
+      "name": "收样员老方",
+      "roles": [
+        "sampler"
+      ]
+    },
+    {
+      "id": "u-grinder",
+      "name": "试磨员阿砚",
+      "roles": [
+        "grinder"
+      ]
+    },
+    {
+      "id": "u-judge",
+      "name": "评分师墨衡",
+      "roles": [
+        "judge"
+      ]
+    },
+    {
+      "id": "u-reviewer",
+      "name": "复核员清秋",
+      "roles": [
+        "reviewer"
+      ]
+    },
+    {
+      "id": "u-admin",
+      "name": "室主任松岚",
+      "roles": [
+        "admin"
+      ]
+    }
+  ],
+  "batches": [
+    {
+      "id": "ENV-20260902-001",
+      "code": "ENV-20260902-001",
+      "temp": 22.4,
+      "humidity": 55,
+      "frozen": false,
+      "frozenAt": null,
+      "frozenReason": null,
+      "createdBy": {
+        "id": "u-admin",
+        "name": "室主任松岚"
+      },
+      "createdAt": "2026-09-02T08:00:00.000Z",
+      "readings": [
+        {
+          "at": "2026-09-13T14:36:27.594Z",
+          "temp": 22.4,
+          "humidity": 55,
+          "by": {
+            "id": "u-admin",
+            "name": "室主任松岚"
+          }
+        }
+      ]
+    },
+    {
+      "id": "ENV-20260902-002",
+      "code": "ENV-20260902-002",
+      "temp": 16.8,
+      "humidity": 58,
+      "frozen": true,
+      "frozenAt": "2026-09-13T14:36:27.594Z",
+      "frozenReason": "温度 16.8℃ 越界[18,25]",
+      "createdBy": {
+        "id": "u-admin",
+        "name": "室主任松岚"
+      },
+      "createdAt": "2026-09-02T08:00:00.000Z",
+      "readings": [
+        {
+          "at": "2026-09-13T14:36:27.594Z",
+          "temp": 16.8,
+          "humidity": 58,
+          "by": {
+            "id": "u-admin",
+            "name": "室主任松岚"
+          }
+        }
+      ]
+    }
+  ],
+  "archives": [
+    {
+      "id": "RA-20260902-001",
+      "batchId": "ENV-20260902-001",
+      "sampleNo": "YL-0001",
+      "operator": "收样员老方",
+      "stage": "收样",
+      "paper": null,
+      "water": null,
+      "speed": null,
+      "colorLayer": null,
+      "sediment": null,
+      "score": null,
+      "sealLocation": null,
+      "returnReason": null,
+      "createdAt": "2026-09-02T09:00:00.000Z",
+      "updatedAt": "2026-09-13T14:36:27.594Z",
+      "steps": [
+        {
+          "seq": 1,
+          "at": "2026-09-02T09:00:00.000Z",
+          "step": "建档",
+          "actor": {
+            "id": "u-admin",
+            "name": "室主任松岚"
+          },
+          "note": "收样登记"
+        }
+      ],
+      "versions": [
+        {
+          "no": 1,
+          "at": "2026-09-13T14:36:27.594Z",
+          "step": "收样",
+          "actor": {
+            "id": "u-admin",
+            "name": "室主任松岚"
+          },
+          "note": "收样登记",
+          "archive": {
+            "id": "RA-20260902-001",
+            "batchId": "ENV-20260902-001",
+            "sampleNo": "YL-0001",
+            "operator": "收样员老方",
+            "stage": "收样",
+            "paper": null,
+            "water": null,
+            "speed": null,
+            "colorLayer": null,
+            "sediment": null,
+            "score": null,
+            "sealLocation": null,
+            "returnReason": null,
+            "updatedAt": "2026-09-13T14:36:27.594Z"
+          },
+          "stats": {
+            "byStage": {
+              "收样": 1,
+              "试写": 0,
+              "评分": 0,
+              "封存": 0,
+              "退回": 0
+            },
+            "active": 1,
+            "batches": 2,
+            "batchesFrozen": 1,
+            "openTickets": 1,
+            "versions": 0
+          }
+        }
+      ],
+      "verSeq": 1
+    }
+  ],
+  "tickets": [
+    {
+      "id": "EX-20260913-001",
+      "batchId": "ENV-20260902-002",
+      "type": "环境越界",
+      "detail": "温度 16.8℃ 越界[18,25]",
+      "reading": {
+        "at": "2026-09-13T14:36:27.594Z",
+        "temp": 16.8,
+        "humidity": 58,
+        "by": {
+          "id": "u-admin",
+          "name": "室主任松岚"
+        }
+      },
+      "status": "待复核",
+      "createdBy": {
+        "id": "u-admin",
+        "name": "室主任松岚"
+      },
+      "createdAt": "2026-09-13T14:36:27.594Z",
+      "review": null
+    }
+  ],
+  "events": [
+    {
+      "id": "EVT-20260913-001",
+      "at": "2026-09-13T14:36:27.594Z",
+      "type": "env.reading",
+      "payload": {
+        "batchId": "ENV-20260902-001",
+        "temp": 22.4,
+        "humidity": 55,
+        "by": "u-admin"
+      }
+    },
+    {
+      "id": "EVT-20260913-002",
+      "at": "2026-09-13T14:36:27.594Z",
+      "type": "env.reading",
+      "payload": {
+        "batchId": "ENV-20260902-002",
+        "temp": 16.8,
+        "humidity": 58,
+        "by": "u-admin"
+      }
+    },
+    {
+      "id": "EVT-20260913-003",
+      "at": "2026-09-13T14:36:27.594Z",
+      "type": "env.freeze",
+      "payload": {
+        "batchId": "ENV-20260902-002",
+        "ticketId": "EX-20260913-001",
+        "reason": "温度 16.8℃ 越界[18,25]"
+      }
+    }
+  ],
+  "snapshots": [
+    {
+      "id": "SNAP-20260913-001",
+      "at": "2026-09-13T14:36:27.594Z",
+      "archiveId": "RA-20260902-001",
+      "versionNo": 1,
+      "stats": {
+        "byStage": {
+          "收样": 1,
+          "试写": 0,
+          "评分": 0,
+          "封存": 0,
+          "退回": 0
+        },
+        "active": 1,
+        "batches": 2,
+        "batchesFrozen": 1,
+        "openTickets": 1,
+        "versions": 0
+      }
+    }
+  ]
+}
